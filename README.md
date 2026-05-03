@@ -2,8 +2,6 @@
 
 **Candidate:** Abhay Chaudhary  
 **Position:** GenAI Engineer  
-**Score:** 100/100 (Core + All Extensions)  
-**Latency:** ~4-6s (Optimized) | **Accuracy:** 100.0% (Validated)
 
 ---
 
@@ -49,7 +47,7 @@ The system follows a **Specialist-Agent Pattern**. Instead of a single massive p
 
 ### 1. Environment Setup
 ```bash
-git clone <your-repo-link>
+git clone https://github.com/A-b-h-a-y-0-2/RAG-Pipeline/blob/main/README.md
 cd helix-srop
 uv sync
 cp .env.example .env
