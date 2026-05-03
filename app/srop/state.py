@@ -7,14 +7,17 @@ Keep it small — every turn loads and saves this.
 TODO: extend if your design requires additional fields.
 """
 from typing import Literal
+
 from pydantic import BaseModel, Field
 
 
 class SessionState(BaseModel):
     user_id: str
     plan_tier: Literal["free", "pro", "enterprise"] = "free"
-    last_agent: Literal["knowledge", "account", "smalltalk"] | None = None
+    last_agent: Literal["knowledge", "account", "escalation", "smalltalk"] | None = None
     turn_count: int = 0
+    last_ticket_id: str | None = None
+    idempotency_cache: dict[str, str] = Field(default_factory=dict)  # key -> reply
 
     def to_db_dict(self) -> dict:
         return self.model_dump()

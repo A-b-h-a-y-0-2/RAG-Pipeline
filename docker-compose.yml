@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  helix-srop:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./helix.db:/app/helix.db
+      - ./chroma_db:/app/chroma_db
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - DATABASE_URL=sqlite+aiosqlite:///./helix.db
+      - CHROMA_PATH=./chroma_db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
